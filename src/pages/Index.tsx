@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 
 export default function LandingPage() {
   return (
@@ -35,6 +36,42 @@ export default function LandingPage() {
               <div className="text-3xl font-bold text-primary-600">24/7</div>
               <div className="mt-2 text-gray-600">תמיכה טכנית</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="bg-white py-20">
+        <div className="container mx-auto px-4">
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">התכונות שלנו</h2>
+            <p className="text-xl text-gray-600">כל מה שאתה צריך לניהול עסק מצליח</p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {[
+              {
+                title: 'ניהול מתקדם',
+                description: 'מעקב אחר כל הפעילויות העסקיות שלך במקום אחד',
+                icon: '📊'
+              },
+              {
+                title: 'דוחות בזמן אמת',
+                description: 'קבל תובנות מיידיות על ביצועי העסק',
+                icon: '⏱'
+              },
+              {
+                title: 'אוטומציה חכמה',
+                description: 'חסוך זמן יקר עם מערכת האוטומציה שלנו',
+                icon: '🤖'
+              },
+            ].map((feature, index) => (
+              <Card key={index} className="p-6">
+                <div className="mb-4 text-4xl">{feature.icon}</div>
+                <h3 className="mb-2 text-xl font-bold">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
