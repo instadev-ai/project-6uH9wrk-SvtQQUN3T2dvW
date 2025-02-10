@@ -75,6 +75,76 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* Pricing Section */}
+      <section className="bg-gray-50 py-20">
+        <div className="container mx-auto px-4">
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">מחירים</h2>
+            <p className="text-xl text-gray-600">בחר את התכנית המתאימה לך</p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {[
+              {
+                name: 'בסיסי',
+                price: '99',
+                features: [
+                  'ניהול משימות',
+                  'דוחות בסיסיים',
+                  'משתמש אחד',
+                ],
+              },
+              {
+                name: 'מתקדם',
+                price: '199',
+                features: [
+                  'כל התכונות הבסיסיות',
+                  'דוחות מתקדמים',
+                  'עד 5 משתמשים',
+                ],
+                highlighted: true,
+              },
+              {
+                name: 'עסקי',
+                price: '299',
+                features: [
+                  'כל התכונות המתקדמות',
+                  'דוחות מותאמים אישית',
+                  'משתמשים ללא הגבלה',
+                ],
+              },
+            ].map((plan, index) => (
+              <Card 
+                key={index} 
+                className={`p-6 ${plan.highlighted ? 'border-primary-500 border-2' : ''}`}
+              >
+                <div className="text-center">
+                  <h3 className="mb-2 text-2xl font-bold">{plan.name}</h3>
+                  <div className="mb-4">
+                    <span className="text-4xl font-bold">₪{plan.price}</span>
+                    <span className="text-gray-600">/ חודש</span>
+                  </div>
+                  <ul className="mb-6 space-y-2 text-right">
+                    {plan.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center justify-end gap-2">
+                        <span>{feature}</span>
+                        <span className="text-green-500">✓</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button 
+                    className="w-full" 
+                    variant={plan.highlighted ? 'default' : 'outline'}
+                  >
+                    התחל עכשיו
+                  </Button>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
